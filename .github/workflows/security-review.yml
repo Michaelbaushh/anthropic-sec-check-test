@@ -1,14 +1,6 @@
 name: Claude Code Security Review
 
-on:
-  push:
-    branches:
-      - main
-      - develop
-  pull_request:
-    branches:
-      - main
-      - develop
+on: pull_request
 
 jobs:
   security-check:
