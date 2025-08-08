@@ -1,29 +1,13 @@
-name: Claude Code Security Review
-
+name: Security Review
 on: pull_request
-
 jobs:
-  security-check:
+  security:
     runs-on: ubuntu-latest
-    env:
-      ACTIONS_STEP_DEBUG: true
-      ANTHROPIC_VERSION: "2023-06-01"
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 2
-
-      - name: Run Claude Code Security Review
-        uses: anthropics/claude-code-security-review@main
+      - uses: anthropics/claude-code-security-review@main
         with:
           comment-pr: true
           claude-api-key: ${{ secrets.CLAUDE_API_KEY }}
-          anthropic-version: ${{ env.ANTHROPIC_VERSION }}
-
-      - name: Upload security review results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: security-review-results
-          path: security-review-results.zip
