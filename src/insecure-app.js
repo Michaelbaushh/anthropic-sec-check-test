@@ -1,6 +1,5 @@
-// 🚨 Unsicherer Code mit SQL-Injection-Risiko
-// change test for pull request check
-// change2
+// 🚨 Unsicherer Code mit SQL-Injection-Risiko-MIB
+
 const express = require('express');
 const app = express();
 const mysql = require('mysql');
